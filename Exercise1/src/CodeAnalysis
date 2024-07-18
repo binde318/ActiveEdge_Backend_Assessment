@@ -1,0 +1,60 @@
+Program Overview
+The program finds the smallest non-occurring integer in a given array of integers.
+It uses a HashSet to keep track of the integers present in the array and iterates to find the smallest integer not in the set.
+
+Code Analysis:
+Main Method:
+Array Initialization: The array array is initialized with the values {3, 4, -1, 1, 9, 6, 8, 2, 7, 5, 10}.
+Function Call: The findSmallestNonOccurringInteger method is called with the array as an argument.
+Output: The result from the method is printed to the console.
+
+1) public static void main(String[] args) {
+        int[] array = {3, 4, -1, 1,9,6,8,2,7,5,10};
+        System.out.println("The smallest non-occurring integer is: " + findSmallestNonOccurringInteger(array));
+
+    }
+
+2) findSmallestNonOccurringInteger Method:
+public static int findSmallestNonOccurringInteger(int[] array) {
+        Set<Integer> numbers = new HashSet<>();
+        for (int num : array) {
+            numbers.add(num);
+        }
+
+        int smallestNonOccurring = 1;
+        while (numbers.contains(smallestNonOccurring)) {
+            smallestNonOccurring++;
+        }
+
+        return smallestNonOccurring;
+    }
+
+    HashSet Initialization: A HashSet named numbers is created to store the integers present in the array.
+    Populating the HashSet: A for loop iterates through the array and adds each integer to the HashSet.
+    Finding the Smallest Non-Occurring Integer:
+    The variable smallestNonOccurring is initialized to 1.
+    A while loop checks if smallestNonOccurring is in the HashSet. If it is, the variable is incremented by 1.
+    The loop continues until smallestNonOccurring is not found in the HashSet.
+    Returning the Result: The method returns smallestNonOccurring, which is the smallest non-occurring integer.
+
+3)Detailed Steps:
+  Array Elements: {3, 4, -1, 1, 9, 6, 8, 2, 7, 5, 10}
+  HashSet Content after Loop: {3, 4, -1, 1, 9, 6, 8, 2, 7, 5, 10}
+  Finding Smallest Non-Occurring Integer:
+  Start with smallestNonOccurring = 1.
+  Check if 1 is in the HashSet: Yes, so increment to 2.
+  Check if 2 is in the HashSet: Yes, so increment to 3.
+  Continue this process until smallestNonOccurring = 11.
+  Since 11 is not in the HashSet, the loop terminates.
+  Output:
+  The smallest non-occurring integer in the array {3, 4, -1, 1, 9, 6, 8, 2, 7, 5, 10} is 11.
+  Efficiency:
+  Time Complexity:𝑂(𝑛) where 𝑛 is the number of elements in the array.
+  This is because inserting elements into the HashSet and checking for containment are both
+  𝑂(1)
+  O(1) operations, and the loop runs at most 𝑛 times.
+  Space Complexity:𝑂(𝑛 ), as the HashSet stores all the elements of the array.
+
+
+
+
